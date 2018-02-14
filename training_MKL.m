@@ -1,4 +1,4 @@
-function [ pi ] = training_version3( sCall, fCall, m, epsilon, idx_lam, exp_values  )
+function [ pi ] = training_MKL( sCall, fCall, m, epsilon, idx_lam, exp_values  )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
