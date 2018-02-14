@@ -1,4 +1,4 @@
-    function [ FC_pred, corr ] = testing_MKL( sCall, fCall, num_scls, pi, epsilon, idx_lam, exp_values )
+function [ FC_pred, corr ] = testing_MKL( sCall, fCall, num_scls, pi, epsilon, idx_lam, exp_values )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -8,7 +8,8 @@
 FC_pred = zeros(n, n, num_subjs);
 corr = zeros(1, num_subjs);
 error = zeros(1, num_subjs);
-% for each sample
+
+% for each subject find predicted FC
 for l = 1 : num_subjs
     % pre-process
     [MapC, inds] = pre_process(sCall(:,:,l), fCall(:,:,l));
@@ -18,9 +19,9 @@ for l = 1 : num_subjs
     
     % set of heat kernels
     if (~exist( 'exp_values', 'var'))
-        K = Kernels_version3(MapC, num_scls, idx_lam);
+        K = Kernels(MapC, num_scls, idx_lam);
     else 
-        K = Kernels_version3(MapC, num_scls, idx_lam, exp_values);
+        K = Kernels(MapC, num_scls, idx_lam, exp_values);
     end
     
     % prediction
@@ -35,8 +36,6 @@ for l = 1 : num_subjs
     % correlation
     c = corrcoef((FC_pred(:, :, l) .* inds), (fc_range(fCall(:, :, l), '') .* inds));
     corr(1,l) = c(1,2);
-    % mse
-    error(1, l) = sqrt(sum(sum((FC_pred(:, :, l) .* inds - fc_range(fCall(:, :, l), '') .* inds).^(2)))) / (n * n);
 end
 
 end
