@@ -1,4 +1,4 @@
-function [ K ] = Kernels_version3( W, num_scls, idx_lam, exp_values )
+function [ K ] = Kernels( W, num_scls, idx_lam, exp_values )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
