@@ -1,4 +1,4 @@
-    function [ FC_pred, corr ] = testing_version3( sCall, fCall, num_scls, pi, epsilon, idx_lam, exp_values )
+    function [ FC_pred, corr ] = testing_MKL( sCall, fCall, num_scls, pi, epsilon, idx_lam, exp_values )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
